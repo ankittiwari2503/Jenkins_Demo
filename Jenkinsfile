@@ -12,7 +12,10 @@ pipeline{
         booleanParam(name: 'UnitTestCases', defaultValue: false)
         choice(name: 'Environment', choices: ['Dev', 'QA', 'Uat', 'Prod'])
     }
-    
+    triggers{
+        cron('H */4 * * *')
+        pollSCM('H */4 * * *')
+    }
     stages{
         stage("First Stage"){
             steps{
